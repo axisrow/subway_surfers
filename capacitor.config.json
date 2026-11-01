@@ -1,0 +1,8 @@
+{
+  "appId": "com.axisrow.subwaysurfers",
+  "appName": "Subway Surfers",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#000000"
+  }
+}

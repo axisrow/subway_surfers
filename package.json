@@ -1,0 +1,61 @@
+{
+  "name": "subway-surfers-webgl",
+  "version": "1.0.0",
+  "description": "A WebGL version of Subway Surfers for the browser, Android and macOS",
+  "private": true,
+  "main": "electron/main.js",
+  "author": "axisrow",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "serve": "python3 -m http.server 8080 --directory www",
+    "copy:capacitor": "node -e \"require('fs').copyFileSync('node_modules/@capacitor/core/dist/capacitor.js','www/capacitor.js')\"",
+    "android:sync": "npm run copy:capacitor && cap sync android",
+    "android:apk": "npm run android:sync && cd android && ./gradlew assembleDebug",
+    "android:open": "cap open android",
+    "mac:dmg": "electron-builder --mac --publish never",
+    "smoke": "SMOKE_TEST=1 electron ."
+  },
+  "devDependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/cli": "^8.6.0",
+    "@capacitor/core": "^8.6.0",
+    "electron": "^45.2.1",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "com.axisrow.subwaysurfers",
+    "productName": "Subway Surfers",
+    "copyright": "MIT License",
+    "asar": false,
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**/*",
+      "www/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.games",
+      "icon": "build/icon.png",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "arm64"
+          ]
+        }
+      ],
+      "identity": "-",
+      "hardenedRuntime": false,
+      "darkModeSupport": true
+    },
+    "dmg": {
+      "title": "Subway Surfers",
+      "artifactName": "Subway-Surfers-${version}-mac-${arch}.${ext}"
+    }
+  }
+}
