@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <title>Subway Surfers</title>
+    <link rel="stylesheet" href="./index.css" type="text/css">
+  </head>
+
+  <body>
+    <canvas id="glcanvas"></canvas>
+
+    <div id="hud">
+      <div id="score-box">Score: <span id="score">0</span></div>
+      <div id="message"></div>
+      <button id="pause-btn" type="button" aria-label="Pause">&#10074;&#10074;</button>
+    </div>
+
+    <div id="overlay">
+      <div class="panel">
+        <h1 id="overlay-title">Subway Surfers</h1>
+        <p id="overlay-text"></p>
+        <button id="overlay-btn" type="button">Play</button>
+        <div class="help help-touch">
+          Swipe &larr; &rarr; to change lanes, swipe &uarr; to jump, swipe &darr; to drop down.
+        </div>
+        <div class="help help-keys">
+          &larr; &rarr; / A D &mdash; change lanes &nbsp;&middot;&nbsp; &uarr; / W / Space &mdash; jump &nbsp;&middot;&nbsp; &darr; / S &mdash; drop down<br>
+          P / Esc &mdash; pause &nbsp;&middot;&nbsp; Q &mdash; quit &nbsp;&middot;&nbsp; G &mdash; grayscale &nbsp;&middot;&nbsp; F &mdash; lightning
+        </div>
+      </div>
+    </div>
+
+    <!-- Capacitor runtime: only does something inside the Android app -->
+    <script src="./capacitor.js"></script>
+    <script src="./gl-matrix.js"></script>
+    <script src="./globals.js"></script>
+    <script src="./objects.js"></script>
+    <script src="./initBuffers.js"></script>
+    <script src="./draw.js"></script>
+    <script src="./shaders.js"></script>
+    <script src="./inputHandler.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
